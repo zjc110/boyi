@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>已完成</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="艺拍堂">
+
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body ontouchstart>
+<div class="weui_tab">
+    <div class="weui_tab_bd">
+        <div id="tab5" class="weui_tab_bd_item" style="display: block">
+            <div class="we-card order">
+                <div class="orderbar clearfix">
+                    <span class="pull-right c-green">已完成</span>
+                </div>
+                <a href="javascript:;">
+                    <div class="weui-row">
+                        <div class="weui-col-25"><img src="images/m.jpg" class="img-responsive" alt=""></div>
+                        <div class="weui-col-75">
+                            <p class="pp-name">这里是拍品名字这里是拍品名字这里是拍品名字这里是</p>
+                            <p class="total"><span class="smaller">合计：</span><span class="c-green">￥8000.0</span>（含运费￥0.0）</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="we-card order">
+                <div class="orderbar clearfix">
+                    <span class="pull-right c-green">已完成</span>
+                </div>
+                <a href="javascript:;">
+                    <div class="weui-row">
+                        <div class="weui-col-25"><img src="images/m.jpg" class="img-responsive" alt=""></div>
+                        <div class="weui-col-75">
+                            <p class="pp-name">这里是拍品名字这里是拍品名字这里是拍品名字这里是</p>
+                            <p class="total"><span class="smaller">合计：</span><span class="c-green">￥8000.0</span>（含运费￥0.0）</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="we-card order">
+                <div class="orderbar clearfix">
+                    <span class="pull-right c-green">已完成</span>
+                </div>
+                <a href="javascript:;">
+                    <div class="weui-row">
+                        <div class="weui-col-25"><img src="images/m.jpg" class="img-responsive" alt=""></div>
+                        <div class="weui-col-75">
+                            <p class="pp-name">这里是拍品名字这里是拍品名字这里是拍品名字这里是</p>
+                            <p class="total"><span class="smaller">合计：</span><span class="c-green">￥8000.0</span>（含运费￥0.0）</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="jc-ckgd">
+                点击查看更多
+            </div>
+        </div>
+        <!-- tab4 ends -->
+    </div>
+</div>
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/jquery.actual.min.js"></script>
+<script src="js/jquery-weui.js"></script>
+<script src="js/img-custom.js"></script>
+<script>
+    $(function(){
+        $(".btn_auction .forsale").click(function(){
+            var x = $(this).parents(".order").find(".pp-name").html();
+            $.confirm({
+                title: '拍品转卖',
+                text: '“'+x+'”<br>是否转卖这件拍品？',
+                onOK: function () {
+                    //点击确认
+                },
+                onCancel: function () {
+                    //点击取消
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

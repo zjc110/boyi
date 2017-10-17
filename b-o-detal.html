@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>订单详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="艺拍堂">
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/order.css">
+  </head>
+
+  <body ontouchstart>
+    <div class="statubar text-center">
+      待付款
+    </div>
+    <div class="we-card address">
+      <div class="weui-row">
+        <div class="weui-col-10 text-center"><img src="img/地址@3x.png" class="img17" alt=""></div>
+        <div class="weui-col-80 clearfix">
+          <p class="pull-left">收货人：松khjhjhjhjhffgf下幸</p><span class="pull-right">18258447933</span>
+          <p class="pull-left">收货地址：浙江省 杭州市 下城区与上城区交界处下城区与上城区</p>
+        </div>
+        <a href="jc-addrChoice.html"><div class="weui-col-10 text-center"><img src="img/编辑@3x.png" class="img17" alt=""></div></a>
+      </div>
+    </div>
+    <div class="we-card order">
+      <div class="orderbar clearfix">
+        <span class="pull-right c-yef">待付款</span>
+      </div>
+      <div class="weui-row">
+        <div class="weui-col-25"><img src="images/swiper-4.jpg" class="img-c" alt=""></div>
+        <div class="weui-col-75">
+          <p>这里是拍品名字这里是拍品名字这里是拍品名字这里是</p>
+          <p class="total"><span class="smaller">合计：</span><span class="c-yef">￥8000.0</span>（含运费￥0.0）</p>
+        </div>
+      </div>
+    </div>
+    <div class="we-card o-info">
+      <p><span class="c-grey">订单编号：</span>33215489651235478</p>
+      <p><span class="c-grey">创建时间：</span>2016-08-08&nbsp;&nbsp;10:03:05</p>
+    </div>
+    <div class="we-card c-yef text-center">
+      店铺电话：13856412359
+    </div>
+    <a href="javascript:;" class="weui_btn weui_btn_primary jc-jia" >立即付款</a>
+
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/jquery-weui.js"></script>
+    <script src="js/jquery.actual.min.js"></script>
+    <script src="js/img-custom.js"></script>
+    <script>      
+      $(function(){
+        var chk = 0;
+
+        function setChk(str){
+          chk = str;
+        }
+
+        function getChk(){
+          return chk;
+        }
+
+        //单选框脚本
+          $(".m-info .weui_cell").on("click",function(){
+            var x = $(this).find('label');
+            if(x.hasClass('check')){
+              return;
+            }else{
+              $(this).parents().find('input[type=radio]').attr('checked',false);
+              $(this).parents().find('.check').removeClass('check');
+              x.addClass('check');
+              var y = x.parents('.weui_cell_bd').find('input[type=radio]');
+              y.attr('checked',true);
+              setChk(y.val());
+            }
+          })
+
+      
+        
+        $('.weui_btn_primary').click(function() {
+          var x = getChk();
+          if(x == 0){
+            // 判断订单是不是线下支付状态，如果是就改变
+            // 进入微信支付流程
+            alert('微信支付');
+          }else{
+            // ajax 改变订单为线下支付状态
+            $.actions({
+              title: "选择官方打款账户",
+              onClose: function() {
+                console.log("close");
+              },
+              actions: [
+                {
+                  text: "杭州银行",
+                  className: "",
+                  onClick: function() {
+                    $.confirm("账户名称：杭州留青拍卖有限公司<br>开户行：杭州银行文创支行<br>账号：3301040160003298463<br>成功打款后，订单状态将在1个工作日内发生改变", "官方账户信息", function() {
+                      $.toast("感谢您的支持和理解");
+                    }, function() {
+                      //取消操作
+                      $.toast("如有疑问请联系客服");
+                    });
+                  }
+                },
+                {
+                  text: "工商银行",
+                  className: "",
+                  onClick: function() {
+                    $.confirm("账户名称：杭州留青拍卖有限公司<br>开户行：工行杭州庆春支行<br>账号：1202020219900481430<br>成功打款后打款后，订单状态将在1个工作日内发生改变", "官方账户信息", function() {
+                      $.toast("感谢您的支持和理解");            
+                    }, function() {
+                      //取消操作
+                      $.toast("如有疑问请联系客服");
+                    });
+                  }
+                },
+                {
+                  text: "联系客服",
+                  className: '',
+                  onClick: function() {
+                    $.confirm("客服热线：4009261883<br>客服微信：yiyipai001<br>", "客服信息", function() {
+                      $.toast("祝您生活愉快");            
+                    }, function() {
+                      //取消操作
+                      $.toast("祝您生活愉快");
+                    });
+                  }
+                }
+              ]
+            });
+          }
+        });
+      })
+    </script>
+    </body>
+  </html>
